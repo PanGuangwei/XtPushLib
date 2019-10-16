@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "428919784134",
+    "firebase_url": "https://easyfcm-5ff24.firebaseio.com",
+    "project_id": "easyfcm-5ff24",
+    "storage_bucket": "easyfcm-5ff24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428919784134:android:f716b2224cd73c241c4dc7",
+        "android_client_info": {
+          "package_name": "com.trung.easyfcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428919784134-f0ao2hnaqlvonrmkf81o6c3j818f06r6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQuPQEwK0RBLxEeBO-Vva5J1pJh6VJKF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428919784134-f0ao2hnaqlvonrmkf81o6c3j818f06r6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428919784134:android:09ab0776002c45a61c4dc7",
+        "android_client_info": {
+          "package_name": "com.xingtel.xtpush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428919784134-f0ao2hnaqlvonrmkf81o6c3j818f06r6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQuPQEwK0RBLxEeBO-Vva5J1pJh6VJKF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428919784134-f0ao2hnaqlvonrmkf81o6c3j818f06r6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

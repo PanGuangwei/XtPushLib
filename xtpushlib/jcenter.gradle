@@ -1,0 +1,114 @@
+/**
+ * maven 插件相关
+ */
+apply plugin: 'com.github.dcendents.android-maven'
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging libraryPackaging
+                groupId publishedGroupId
+                artifactId artifact
+
+                // Add your description here
+                name libraryName
+                description libraryDesc
+                url websiteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection websiteUrl
+                    developerConnection websiteUrl
+                    url websiteUrl
+
+                }
+            }
+        }
+    }
+}
+
+
+
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+
+
+artifacts {
+    archives sourcesJar
+}
+
+/**
+ * bintray上传
+ */
+apply plugin: 'com.jfrog.bintray'
+
+def siteUrl = project.websiteUrl
+def gitUrl = project.vcsUrl
+def libName = project.name
+
+group = project.publishedGroupId
+version = project.versionName
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+
+    pkg {
+        repo = project.bintrayRepo  //发布到Bintray的maven库
+        name = libName  //发布到Bintray上的项目名字
+        desc = project.libraryDesc
+        override = true
+        publish = true
+        publicDownloadNumbers = true
+        websiteUrl = siteUrl
+        issueTrackerUrl = project.issueTrackerUrl
+        vcsUrl = gitUrl
+        licenses = [project.licenseName]
+        publish = true
+        //attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        version {
+            desc = project.libraryVersionDesc
+            released = new Date()
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty("bintray.gpg.password")
+                //Optional. The passphrase for GPG signing'
+            }
+        }
+    }
+}
+
+/**
+ * 合并打包和上传
+ * 执行./gradlew jcenter
+ * 自定完胜打包和上传
+ */
+task jcenter {
+    println "Release ${version}"
+}
+
+jcenter.dependsOn(install)
+jcenter.dependsOn(bintrayUpload)
